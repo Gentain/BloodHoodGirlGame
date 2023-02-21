@@ -6,16 +6,19 @@ using static LevelCounter;
 
 public class AllResults : MonoBehaviour
 {
-    public int level = 0;
-    int allLevel = 3;
-    public const int allRank = 5;
-    float[,] recordTime = new float[LevelCounter.maxLevel, allRank];
+    public int level = 0;   // (現在のレベル数)から-1した数字。配列と取り扱う都合上実数字から-1している。
+    int allLevel = 3;   // 全てのレベル数
+    public const int allRank = 5;   // 記録するスコア数
+    
+    // (全レベル数)*(スコアの記録数)の個数分、スコアの記録場所を作る。
+    float[,] recordTime = new float[LevelCounter.maxLevel, allRank]; 
+
     public Text[] bestTime = new Text[allRank];
-    float extraBox;
-    public Text levelText;
+    float extraBox; // ソート用の変数
+    public Text levelText; // レベル数のテキスト
     float input_x;
     float inputForce = 1f;
-    bool movingStopper;
+    bool movingStopper; // ボタンを押した際に見たい面のスコアを見過ごさない為のストッパー
 
     // Start is called before the first frame update
     void Start()
